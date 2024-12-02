@@ -1,12 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My new app</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-card">
+            <h1>Welcome to Your Teaching Dashboard</h1>
+            <form id="teacherSetupForm">
+                <div class="input-group">
+                    <label for="teacherName">
+                        <i class="fas fa-user"></i> Teacher's Name
+                    </label>
+                    <input type="text" id="teacherName" required placeholder="Enter your name">
+                </div>
+                
+                <div class="input-group">
+                    <label for="appName">
+                        <i class="fas fa-signature"></i> Application Name
+                    </label>
+                    <input type="text" id="appName" required placeholder="Choose your application name">
+                </div>
+                
+                <div class="input-group">
+                    <label for="schoolIcon">
+                        <i class="fas fa-school"></i> School Icon
+                    </label>
+                    <div class="file-upload">
+                        <input type="file" id="schoolIcon" accept="image/*" required>
+                        <div class="upload-preview">
+                            <img id="iconPreview" src="#" alt="School Icon Preview" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-arrow-right"></i> Get Started
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-header" style="display: none;">
+        <div class="header-content">
+            <div class="school-info">
+                <img id="headerSchoolIcon" src="#" alt="School Icon">
+                <h1 id="appNameDisplay"></h1>
+            </div>
+            <div class="developer-info">
+                <p>Developed by <span id="teacherNameDisplay"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content" style="display: none;">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="gradeEntry">
+                <i class="fas fa-graduation-cap"></i>
+                Grade Entry
+            </button>
+            <!-- Additional tabs will be added here -->
+        </div>
+
+        <div class="tab-content">
+            <div id="gradeEntry" class="tab-pane active">
+                <div class="grade-management">
+                    <h2><i class="fas fa-graduation-cap"></i> Grade Management</h2>
+                    
+                    <div class="add-grade-form">
+                        <div class="input-group">
+                            <label for="gradeNumber">Grade Number</label>
+                            <input type="number" id="gradeNumber" min="1" max="12" required placeholder="Enter grade (e.g., 4)">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="gradeClass">Class (Optional)</label>
+                            <input type="text" id="gradeClass" placeholder="Enter class (e.g., A)">
+                        </div>
+
+                        <button id="addGradeBtn" class="action-btn">
+                            <i class="fas fa-plus"></i> Add Grade
+                        </button>
+                    </div>
+
+                    <div id="notification" class="notification" style="display: none;"></div>
+
+                    <div class="grades-container">
+                        <h3>Active Grades</h3>
+                        <div id="gradesList" class="grades-list">
+                            <!-- Grades will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
